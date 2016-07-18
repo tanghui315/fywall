@@ -1,0 +1,11 @@
+{
+   "DESCRIPTION": {
+      "message": "最简单易用的科学上网服务，为国际化的互联网工作者量身打造，一键将网站加入白名单即可。无繁琐配置(无需：goAgent/ShadowSocks/Proxy Switchysharp/VPN/自己搭代理服务器)，即装即用。"
+   },
+   "EXT_NAME": {
+      "message": "红杏"
+   },
+   "POPUP_TITLE": {
+      "message": "红杏"
+   }
+}

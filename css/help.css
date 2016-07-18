@@ -1,0 +1,153 @@
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,
+del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,
+b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align:baseline;
+}
+h1,h2,h3,h4,h5,h6,p,blockquote{
+  word-wrap:break-word;
+  -ms-word-wrap:break-word;
+}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section{
+	display:block;
+}
+a:link,a:hover,a:active,a:visited{
+	text-decoration:none;
+}
+ol,ul{
+	list-style:none;
+}
+input{
+	outline:0;
+	font-family: Microsoft Yahei;
+}
+textarea,button{
+	outline:0;
+	resize:none;
+	font-family: Microsoft Yahei;
+}
+blockquote,q{
+	quotes:none;
+}
+blockquote:before,blockquote:after,
+q:before,q:after{
+	content:'';
+	content:none;
+}
+/*********************************************
+* NAVIGATION CONTROLS
+*********************************************/
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+border-right-color: #C01010; }
+
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+border-left-color: #C01010; }
+
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+border-bottom-color: #C01010; }
+
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+border-top-color: #C01010; }
+
+.reveal .controls .navigate-left.enabled:hover {
+border-right-color: #C01010; }
+
+.reveal .controls .navigate-right.enabled:hover {
+border-left-color: #C01010; }
+
+.reveal .controls .navigate-up.enabled:hover {
+border-bottom-color: #C01010; }
+
+.reveal .controls .navigate-down.enabled:hover {
+border-top-color: #C01010; }
+
+/*********************************************
+* PROGRESS BAR
+*********************************************/
+.reveal .progress {
+background: rgba(0, 0, 0, 0.2); }
+
+.reveal .progress span {
+background: #CB5050;
+-webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+-moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
+
+body{
+	font-family:Baskerville, Georgia, "Liberation Serif", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, TW\-Kai, serif;
+	background: linear-gradient(#e1e4e7,#f3f4f5);
+}
+
+.reveal {
+	background: url(../images/pattern.png) repeat,linear-gradient(#e1e4e7,#f3f4f5);
+}
+
+.logo {
+	background: url(../images/icon128.png) no-repeat;
+	background-size: 80px;
+	height: 80px;
+	width: 638px;
+	margin: 0 auto;
+}
+
+.logo h1 {
+	font-size: 34px;
+  	line-height: 2.3;
+	padding-left: 90px;
+	color: #666;
+	text-shadow: 1px 1px 0 #fff;
+}
+.logo p {
+	color: #666;
+	font-size: 18px;
+	text-align: right;
+}
+.logo h1 span {
+	padding-left: 10px; 
+	color: #C01010;
+}
+
+.reveal h1 {
+	font-size: 34px;
+	color: #C01010;
+	text-shadow: 1px 1px 0 #fff;
+}
+.reveal section:nth-child(2) .text{
+	
+	font-size: 24px;
+	color: #C01010;
+	text-shadow: 1px 1px 0 #fff;
+	
+}
+
+.reveal section p {
+	padding-top: 30px;
+	line-height: 36px;
+	color: #666;
+	font-size: 22px;
+}
+
+.reveal section:nth-child(2) p {
+	padding-top: 30px;
+}
+
+.reveal section:nth-child(2) p a{
+	background: #2DBE60;
+	color: #fff;
+	padding: 5px;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}

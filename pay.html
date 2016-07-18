@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app='fwLogin' ng-csp  >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>充值-飞岩</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/pay.css">
+		<script type="text/javascript" charset="utf-8"  src="/agjs/angular.min.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/cjs/factory.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="pay-header">
+				<div class="logo"><h1>飞岩<span>VIP</span></h1></div>
+				<p><i class="glyphicon glyphicon-user"></i> nishu@longtugame.com</p>
+				<h2>请选择你的购买需求</h2>
+			</div>
+
+			<div class="pay-type">
+				<div class="left type-block">
+					<h3>体验会员</h3>
+					<div class="content">
+						<h4>¥<span>1</span></h4>
+						<p class="duration">
+							2天
+						</p>
+						<button class="pay-btn">开通体验</button>
+					</div>
+				</div>
+
+				<div class="middle type-block">
+					<h3>年费会员</h3>
+					<div class="content">
+						<h4>¥<span>110</span></h4>
+						<p class="duration">
+							365天
+						</p>
+						<button class="pay-btn">立即购买</button>
+					</div>
+				</div>
+
+				<div class="right type-block">
+					<h3>月费会员</h3>
+					<div class="content">
+						<h4>¥<span>10</span></h4>
+						<p class="duration">
+							30天
+						</p>
+						<button class="pay-btn">立即购买</button>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<div class="pay-invitation">
+				
+				<form class="form-inline">
+					<label for="invitationCode">体验码（可免费体验3天）：</label>
+					<input type="text" class="form-control" id="invitationCode" placeholder="请输入体验码">
+					<button type="button" class="btn btn-default">确定</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

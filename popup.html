@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app='popapp' ng-csp >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>飞岩</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/popup.css">
+		<script type="text/javascript" charset="utf-8"  src="/agjs/angular.min.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/agjs/angular-route.min.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/agjs/angular-animate.min.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/cjs/factory.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/cjs/popup.js"></script>
+	</head>
+	<body ng-controller="popCtr">
+
+		<div class="loading-tips" ng-if="!popup.shortUrl&&!popup.isoption">
+			<span class="loading-bar"></span>
+			<span class="loading-text">正在获取网站信息...</span>
+		</div>
+		
+		<div class="view-animate-container">	
+			<div ng-view></div>
+		</div>
+
+	</body>
+</html>

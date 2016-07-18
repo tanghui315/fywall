@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app='fwLogin' ng-csp  >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>登录-飞岩</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/fw.css">
+		<script type="text/javascript" charset="utf-8"  src="/agjs/angular.min.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/cjs/factory.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/cjs/login.js"></script>
+	</head>
+	<body>
+		<div class="dialog" ng-controller="loginCtr">
+			<div class="title login">
+				<h3>登录飞岩</h3>
+			</div>
+
+			<div class="dialog-content">
+				<form class="form-horizontal showcase-form" role="form" name="login_form" novalidate>
+					 <div class="input-group input-group-lg">
+					  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					  <input type="email" class="form-control" required  name="login_email"  ng-model="login.email" placeholder="账号（邮箱地址）">
+					</div>
+					<div class="input-group input-group-lg">
+					  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					  <input type="password" class="form-control" required name="login_pwd"  ng-minlength='6' ng-model="login.pwd" placeholder="密码">
+					</div>
+					<div class="input-info">
+						<a href="javascript:;" class="register" ng-click='login.toReg()' >注册账号</a>
+						<a href="javascript:;" ng-click='login.toForgot()' >忘记密码？</a>
+					</div>
+					
+					<button type="submit" class="btn btn-lg btn-primary btn-block"  ng-class="{'disabled': login.dis}" ng-click="login.submitLogin(login_form)"  ng-disabled="login_form.$invalid "><span class="btn-text">登陆</span></button>
+				</form>
+			</div>
+			
+		</div>
+	</body>
+</html>

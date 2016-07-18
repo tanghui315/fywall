@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app='fwReg' ng-csp  >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>注册账号-飞岩</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/fw.css">
+		<script type="text/javascript" charset="utf-8"  src="/agjs/angular.min.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/cjs/factory.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/cjs/reg.js"></script>
+	</head>
+	<body>
+		<div class="dialog" ng-controller="regCtr">
+			<div class="title login">
+				<h3>注册账号</h3>
+			</div>
+
+			<div class="dialog-content">
+				<form class="form-horizontal showcase-form" role="form" name="reg_form" novalidate >
+					<div class="input-group input-group-lg">
+					  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					  <input type="email" class="form-control" required  name="member_email"  ng-model="member.email" placeholder="账号（邮箱地址）">
+					</div>
+					<div class="send-code-btn">
+						<span ng-bind='member.code_msg' ></span>
+					  	<button class="btn btn-default btn-xs" ng-click="member.sendCode(reg_form)">获取激活码</button>
+					</div>
+					<div class="input-group input-group-lg">
+					  <span class="input-group-addon"><i class="glyphicon glyphicon-text-background"></i></span>
+					 <input type="text" class="form-control" required  name="member_email_code"  ng-model="member.email_code" placeholder="邮件激活码">
+					</div>
+					<div class="input-group input-group-lg">
+					  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					  <input type="password" class="form-control" required name="member_pwd" ng-focus="repeatPassword=true"  ng-minlength='6' ng-model="member.pwd" placeholder="密码（至少6位）">
+					</div>
+					<div class="repeat-password input-group-lg" ng-class="{'repeat-show':repeatPassword}">
+					  <input type="password" class="form-control" ng-class="{fwerr:member.cpwd!=member.pwd}" required  ng-minlength='6'  ng-model="member.cpwd" name="member_cpwd" placeholder="确认密码">
+					</div>
+					<div class="input-info">
+						<a href="/login.html">如果您已有账号，点此登录</a>
+					</div>
+					<button type="submit" class="btn btn-lg btn-primary btn-block"  ng-class="{'disabled': member.dis}" ng-click="member.submitReg(reg_form)"  ng-disabled="reg_form.$invalid "><span class="btn-text">注册</span></button>
+				
+				</form>
+			</div>
+			
+		</div>
+	</body>
+</html>

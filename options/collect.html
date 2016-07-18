@@ -1,0 +1,37 @@
+<form role="form" name="url_form" class="form-inline add-domain" novalidate >
+  <input type="text" required name="weburl" class="form-control" ng-model="collect.weburl" placeholder="手动添加科学上网域名" /> 
+  <select class="form-control" ng-model="collect.type"  ng-options="t.type_name for t in type.data">
+          <option value="" style="display:none" >默认类型</option>
+  </select>
+  <button type="submit" ng-click="collect.add(url_form)" class="btn btn-success">添加</button>
+</form> 
+
+<table class="table table-striped" ng-if="collect.data.length">
+      <thead>
+        <tr>
+          <th style="width:380px">网址</th>
+          <th style="width:280px">类型</th>
+          <th style="width:60px">操作</th>
+        </tr>
+      </thead>
+      <tbody class="table-list">
+        <tr  ng-repeat="c in collect.data" >
+          <td   style="width:380px">{{c.web_url}}</td>
+          <td style="width:280px" ng-if="c.type_id==0">默认</td>
+		      <td style="width:280px" ng-if="c.type_id!=0">
+            {{c.type_name}}
+          </td>
+          <td style="width:60px">
+            <i   class="glyphicon glyphicon-pencil" ng-click="collect.urledit($event,c)" title="编辑"></i>
+            <i  style="display:none" class="glyphicon glyphicon-ok" ng-click="collect.okedit(c)" title="确认"></i>
+            <i class="glyphicon glyphicon-trash" title="移除" ng-click="collect.remove(c.web_url)"></i>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+
+
+  <div ng-if="collect.data.length==0" class="inbox">
+      <i class="glyphicon glyphicon-inbox"></i>
+      <p>没有数据</p>
+</div>

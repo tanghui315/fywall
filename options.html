@@ -1,0 +1,110 @@
+<!doctype html>
+<html ng-app='optapp' ng-csp >
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>飞岩--设置</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/fw.css">
+    <script type="text/javascript" charset="utf-8"  src="/agjs/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" charset="utf-8"  src="/agjs/angular.min.js"></script>
+	<script type="text/javascript" charset="utf-8"  src="/agjs/angular-route.min.js"></script>
+	<script type="text/javascript" charset="utf-8"  src="/agjs/angular-animate.min.js"></script>
+    <script type="text/javascript" charset="utf-8"  src="/agjs/ui-bootstrap-tpls-0.14.3.min.js"></script>
+	<script type="text/javascript" charset="utf-8"  src="/cjs/factory.js"></script>
+	<script type="text/javascript" charset="utf-8"  src="/cjs/options.js"></script>
+</head>
+<body>
+
+
+	<div class="main">
+		<div class="header-bar"  ng-controller="mainCtr"  >
+            <script type="text/ng-template" id="editPwd.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">修改密码</h3>
+                </div>
+                <div class="modal-body dialog-content">
+                    <div class="input-group">
+                        <input type="password" class="form-control" required  name="oldpwd"  ng-model="oldpwd" placeholder="当前密码">
+                    </div>
+                    <div class="input-group">
+                        <input type="password" class="form-control" required  name="pwd1"  ng-model="pwd1" placeholder="新密码">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" class="form-control" required name="pwd2"  ng-minlength='6' ng-model="pwd2" placeholder="确认密码">
+                    </div>
+                    <p ng-if="showErr" ng-bind="showMsg"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" ng-click="toEdit()" >确定</button>
+                    <button class="btn btn-warning" type="button" ng-click="cancel()" >取消</button>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="servList.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">选择服务器</h3>
+                </div>
+                <div class="modal-body dialog-content">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>名称</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ss in sslist" >
+                                <td><input type="radio" name="server" ng-model="current.host"  value="{{ss.host_name}}"  /></td>
+                                <td ng-bind="ss.host_title"></td>
+                                <td style="color:green" ng-if="ss.connectivity<=300">良好</td>
+                                <td style="color:#ffff00" ng-if="ss.connectivity>300 && ss.connectivity<1300">拥挤</td>
+                                <td style="color: red" ng-if="ss.connectivity>1300">瘫痪</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p  ng-bind="showSMsg"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-class="{'disabled': dis}" type="button" ng-click="toSEdit()" >确定</button>
+                    <button class="btn btn-warning" type="button" ng-click="cancelS()" >取消</button>
+                </div>
+            </script>
+			<div class="version pull-left">
+				<a target="_blank"  href="{{main.baseUrl}}" class="logo">飞岩</a>
+				<h1 >飞岩</h1>
+				<p ng-if="main.version==main.versionServer">版本：v{{main.version}}</p>
+				<p ng-if="main.version!=main.versionServer" style="color:red" >版本过期,请<a  target="_blank" href="{{main.baseUrl}}release/fws.crx" >下载</a></p>
+                <p><span ng-bind="main.pss.ssname"></span> <a href="javascript:;" ng-click="main.editServer()" >切换</a></p>
+                <p>飞岩助手秘钥：<span style="color:red" ng-bind="main.token" ></span></p>
+			</div>
+			<div class="user-info pull-right">
+				<p><i class="glyphicon glyphicon-user"></i>{{main.username}} <a href="javascript:;" class="logout-btn" ng-click="main.logOut()"><i class="glyphicon glyphicon-log-out"></i>登出</a></p>
+                <p><a href="javascript:;" class="logout-btn" ng-click="main.editPwd()" ><i class="glyphicon glyphicon-lock"></i>修改密码</a></p>
+				<p ng-if="main.days>0" style='color:green'>账号{{main.days}}天后到期 <a href="#/pay" style="color:#d9534f">续费</a></p>
+				<p ng-if="main.days<1">
+                    <a href="#/pay"  style="color:#d9534f">账号已到期，点击充值</a>
+				</p>
+			</div>
+		</div>
+
+		<div id="menu" ng-controller="menuCtr">
+			<ul class="nav nav-tabs">
+			  <li role="presentation" ng-class="{ active: menu.isActive('/')}"><a href="#/">上网列表</a></li>
+			  <li role="presentation" ng-class="{ active: menu.isActive('/type')}"><a href="#/type">类型管理</a></li>
+			  <li role="presentation" ng-class="{ active: menu.isActive('/order')}"><a href="#/order">充值记录</a></li>
+              <li role="presentation" ng-class="{ active: menu.isActive('/agent')}"><a href="#/agent">推广系统</a></li>
+			  <li role="presentation" ng-class="{ active: menu.isActive('/pay')}"><a href="#/pay">充值中心</a></li>
+			  <a href="#/feedback"  class="feedback-btn"><i class="glyphicon glyphicon-list-alt"></i>反馈</a>
+			</ul>
+
+		</div>
+
+		<div class="view-animate-container">	
+			<div ng-view class="view-animate"></div>
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<div>
+<form role="form" name="type_form" class="form-inline add-domain" novalidate >
+	<input type="text" required name="type_name"  class="form-control" ng-model="type.name" placeholder="类型名" /> 
+	<button type="submit" ng-click="type.add(type_form)" class="btn btn-success">添加新类型</button>
+</form>	
+</div> 
+<table class="table table-striped" ng-if="type.data.length">
+      <thead>
+        <tr>
+          <th style="width:660px">类型名称</th>
+          <th style="width:60px">操作</th>
+        </tr>
+      </thead>
+      <tbody class="table-list">
+        <tr ng-repeat="t in type.data" >
+          <td style="width:660px">{{t.type_name}}</td>
+          <td style="width:60px">
+              <i   class="glyphicon glyphicon-pencil" ng-click="type.edit($event,t)" title="编辑"></i>
+              <i  style="display:none" class="glyphicon glyphicon-ok" ng-click="type.okedit(t)" title="确认"></i>
+              <!-- <button type="button"  ng-click="type.remove(t.mwt_id)" class="btn btn-danger btn-xs">删除</button> -->
+              <i class="glyphicon glyphicon-trash" title="移除" ng-click="type.remove(t.mwt_id)"></i>
+          </td>
+        </tr>
+      </tbody>
+ </table>
+
+
+<div ng-if="type.data.length==0" class="inbox">
+      <i class="glyphicon glyphicon-inbox"></i>
+      <p>没有数据</p>
+</div>

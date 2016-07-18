@@ -1,0 +1,27 @@
+{
+    "name": "飞岩",
+    "version": "1.2.2",
+    "description": "您最贴心的网络加速器，还可以当收藏夹用哦。",
+    "default_locale": "zh_CN",
+	"background": {
+		"page": "background.html"
+	},
+    "browser_action": {
+        "default_icon": "images/fw.png",
+        "default_popup": "popup.html",
+        "default_title": "飞岩"
+    },
+    "icons": {
+		"19": "images/icon-auto-active.png",
+        "128": "images/icon128.png"
+    },
+    "permissions": [
+		"tabs",
+		"webRequest",
+		"webRequestBlocking",
+		"proxy",
+		"http://*/", 
+		"https://*/"
+    ],
+    "manifest_version": 2
+}

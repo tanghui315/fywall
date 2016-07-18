@@ -1,0 +1,8 @@
+<form  name="feedback_form" class="feedback-wrapper">
+  <select class="form-control" ng-model='feedback.type'  ng-options="t.name for t in feedback.types" >
+
+  </select>
+  <br/>
+  <textarea name="msgcontent" class="form-control" rows="6" placeholder="请输入您的反馈意见..." ng-model="feedback.msgcontent" required></textarea>
+  <button type="submit" ng-click="feedback.toSend(feedback_form)" class="btn btn-success" ng-disabled="feedback_form.$invalid">提交</button>
+</form>

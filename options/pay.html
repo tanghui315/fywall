@@ -1,0 +1,107 @@
+<div class="pay-wrapper">
+	<div class="pay-menu">
+		<ul class="nav nav-pills nav-stacked">
+		  <li role="presentation" ng-class="{ active: pay.ebank}" ng-click="pay.payTab('ebank')"><a href="javascript:;">网银充值</a></li>
+		  <li role="presentation" ng-class="{ active: pay.alipay}" ng-click="pay.payTab('alipay')"><a href="javascript:;">支付宝</a></li>
+		  <li role="presentation" ng-class="{ active: pay.code}" ng-click="pay.payTab('code')"><a href="javascript:;">使用邀请码</a></li>
+		</ul>
+	</div>
+	<div class="pay-content">
+		 <script type="text/ng-template" id="showCode.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">扫码充值</h3>
+                </div>
+                <div class="modal-body dialog-content">
+          			<img alt="扫二维码支付" src="/images/fycode.png"/>
+                </div>
+                <div class="modal-footer">
+                    
+                </div>
+        </script>
+		<div class="pay-type pay-mode" ng-show="pay.ebank">
+			<div class="left type-block">
+				<h3>体验会员</h3>
+				<div class="content">
+					<h4>¥<span>1</span></h4>
+					<p>专属主机<br/>不限带宽</p>
+					<p class="duration">
+						2天
+					</p>
+					<button class="pay-btn" money='1' proname="飞岩-体验会员" >开通体验</button>
+				</div>
+			</div>
+	
+			<div class="right type-block">
+				<h3>年费会员</h3>
+				<div class="content">
+					<h4>¥<span>110</span></h4>
+					<p>专属主机<br/>不限带宽</p>
+					<p class="duration">
+						365天
+					</p>
+					<button class="pay-btn"  money='110' proname="飞岩-年费会员" >立即购买</button>
+				</div>
+			</div>
+	
+			<div class="middle type-block">
+				<h3>月费会员</h3>
+				<div class="content">
+					<h4>¥<span>10</span></h4>
+					<p>专属主机<br/>不限带宽</p>
+					<p class="duration">
+						30天
+					</p>
+					<button class="pay-btn"  money='10' proname="飞岩-月费会员"  >立即购买</button>
+				</div>
+			</div>
+			<form id="alipayment" name="alipayment" target="_blank" action="http://pay.reper.com.cn/index.php?r=pay/transfer" method="post" >
+    
+                 <input type="hidden" size="30" name="amt" id="amt" value="1.0" />
+                 <input type="hidden" id="orderNo" size="30" name="orderNo" value="" />
+	          	 <input type="hidden" name="merchParam" id="merchParam" value="{{pay.username}}" />
+                <input type="hidden" name="tradeSummary" id="tradeSummary" value="" />
+   
+  		    </form>
+		</div>
+
+		<div class="pay-mode" ng-show="pay.alipay">
+			<div class="alert alert-info" role="alert">
+				<form>
+				  <div class="col-xs-8">
+				    <input type="text" class="form-control" ng-model="pay.tnumber" placeholder="充值交易号" required>
+				  </div>
+				  <button type="submit" ng-click="pay.toAlipay()" class="btn btn-primary">确定充值</button>
+				</form>
+			</div>
+			<p class="tips">
+				支付宝充值说明：<br/>
+				第一步：登录你的支付宝直接付款给 <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<span style="font-weight: bold; font-size:16px;">
+				<a href="javascript:;" ng-click="pay.showCode()" >feiyan_admin@126.com(请点击扫码)</a> </span> <br/>
+				<!-- <img alt="扫二维码支付" src="/images/fycode.png"/><br/> -->
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp最少充值金额：1元，金额不能有小数。
+				<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(有问题请到官方QQ群内讨论：486391231)
+				<br/>
+				第二步：付款成功后请复制支付宝交易号（交易号是一串32位的数字<br/>
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp类似这种20160303200040011100440021930320）<br/>
+				第三步：填写支付宝交易号，输入后即可到账。
+			</p>
+		</div>
+
+		<div class="pay-mode" ng-show="pay.code">
+			<div class="alert alert-info" role="alert">
+				<form class="form-inline" id="payment" name="payment" target="_blank" action="/index.php?r=member/usecode" method="post">
+				  <div class="col-xs-8">
+				  	<input type="hidden" id="corderNo" size="30" name="orderid" value="" />
+                    <input type="hidden" name="username" value="{{pay.username}}" />
+				    <input type="text" id="invitationCode" name="opcode" class="form-control" placeholder="体验码（可免费体验3天）" required />
+				  </div>
+				  <button type="submit" id="useCode" class="btn btn-primary">确定</button>
+				</form>
+			</div>
+			<p class="tips">
+				注意：如果账户时长未改变，重新登录即可。
+			</p>
+		</div>
+	</div>
+</div>

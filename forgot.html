@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app='fwForgot' ng-csp  >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>忘记密码-飞岩</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/fw.css">
+		<script type="text/javascript" charset="utf-8"  src="/agjs/angular.min.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/cjs/factory.js"></script>
+		<script type="text/javascript" charset="utf-8"  src="/cjs/forgot.js"></script>
+	</head>
+	<body>
+		<div class="dialog" ng-controller="forgotCtr">
+			<div class="title login">
+				<h3>忘记密码</h3>
+			</div>
+
+			<div class="dialog-content">
+				<form class="form-horizontal showcase-form" role="form" name="forgot_form" novalidate>
+					 <div class="input-group input-group-lg">
+					  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+					  <input type="email" class="form-control" required  name="forgot_email"  ng-model="forgot.email" placeholder="请输入您的注册邮箱">
+
+					</div>
+                    <p ng-bind="forgot.msg"></p>
+					<div class="input-info">
+						<a href="/reg.html" class="register" >注册账号</a>
+						<a href="/login.html">登录账号</a>
+					</div>
+					
+					<button type="submit" class="btn btn-lg btn-primary btn-block"  ng-click="forgot.toSend(forgot_form)" ng-class="{'disabled': forgot.dis}" ng-disabled="forgot_form.$invalid"  >提交</button>
+				</form>
+			</div>
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+
+<table class="table table-striped table-order" ng-if="agent.data.length">
+      <thead>
+        <tr>
+		       <th style="width:280px" >用户名</th>
+		       <th style="width:280px">充值总金额</th>
+        </tr>
+      </thead>
+      <tbody class="table-list">
+        <tr ng-repeat="a in agent.data" >
+          <td style="width:380px" >{{a.user_name}}</td>
+          <td style="width:380px">{{a.allmoney}}元</td>
+        </tr>
+      </tbody>
+ </table>
+
+
+<div ng-if="agent.data.length==0" class="inbox">
+      <i class="glyphicon glyphicon-inbox"></i>
+      <p>你还没有推广人员</p>
+</div>
