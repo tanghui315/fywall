@@ -20,7 +20,7 @@ fwLogin.controller('loginCtr',function($scope,$rootScope,$http,fwToolbar,faConfi
 							 localStorage.setItem('token',data.access_token);
 							 localStorage.setItem('username',login.email);
 							 localStorage.setItem('urls',angular.toJson(data.web_url_arr));
-							 localStorage.setItem('ps',data.s);
+							 //localStorage.setItem('ps',data.s);
                              localStorage.setItem('pss',data.ss);
 							 localStorage.setItem('days',data.expire_days);
 							 localStorage.setItem('version',data.version);

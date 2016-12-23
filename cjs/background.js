@@ -88,6 +88,20 @@ fwapp.controller('bgctr',function($scope,$rootScope,fwConnect,fwToolbar){
 	chrome.tabs.onRemoved.addListener(function(tabId,removeInfo){
 		localStorage.removeItem('errUrls'+tabId);
 	});
+	//监听update操作，在页面刷新完成的时候检查用户的token数据
+	chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+		 if (changeInfo.status == "complete") {
+			 var cToken=localStorage.getItem('token');
+			 if(cToken==null){ //没登录就不检查了
+				 return false;
+			 }
+			 var shortUrl=fwToolbar.getShortUrl(tab.url);
+			 if(shortUrl){
+				fwToolbar.cktokenServer(cToken);
+
+			 }
+		 }
+	});
 	
 	chrome.webRequest.onErrorOccurred.addListener(function(details){
 		//处理错误的访问，可能是受限站

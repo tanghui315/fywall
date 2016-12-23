@@ -31,10 +31,18 @@ popapp.controller('popCtr',function($scope,$http,fwToolbar,$location,optionProce
         always:false,
         close:false
     };
+	// var port = chrome.runtime.connect("phnhfldfidaialdcjoegaochilgenaji");
+    // console.dir(port);
+	// port.postMessage({msg:"test"});
+	// chrome.runtime.sendMessage("phnhfldfidaialdcjoegaochilgenaji",{msg:"test"},function(response){
+	// 	console.dir(response);
+	// });
     var cToken=localStorage.getItem('token');
 	if(cToken==null){
 					chrome.browserAction.setIcon({path:"images/icon-never.png"},function(){});
 					$location.path('/login');
+					popup.isoption=true;
+					return false;
 	}
 	fwToolbar.checkToken(cToken);
 	popup.username=localStorage.getItem('username');
@@ -54,7 +62,7 @@ popapp.controller('popCtr',function($scope,$http,fwToolbar,$location,optionProce
 	  popup.favIconUrl=tabs[0].favIconUrl;
 	  popup.isHave=false;
 	  popup.isoption=false;
-          if(popup.days<1){
+          if(popup.days==0){
               popup.shortUrl=false;
           }
 	  if(popup.shortUrl){
@@ -268,7 +276,8 @@ popapp.controller('loginCtr',function($scope,$http,fwToolbar,faConfig,fwConnect,
 							 localStorage.setItem('token',data.access_token);
 							 localStorage.setItem('username',login.email);
 							 localStorage.setItem('urls',angular.toJson(data.web_url_arr));
-							 localStorage.setItem('ps',data.s);
+							 //localStorage.setItem('flag',data.s);
+							 console.dir(data);
                              localStorage.setItem('pss',data.ss);
 							 localStorage.setItem('days',data.expire_days);
 							 localStorage.setItem('version',data.version);
@@ -322,7 +331,7 @@ popapp.controller('regCtr',function($scope,$http,faConfig,fwToolbar,$location){
 							 localStorage.setItem('token',data.access_token);
 							 localStorage.setItem('username',member.email);
 							 localStorage.setItem('urls',angular.toJson(data.web_url_arr));
-							 localStorage.setItem('ps',data.s);
+							 //localStorage.setItem('ps',data.s);
                              localStorage.setItem('pss',data.ss);
 							 localStorage.setItem('days',data.expire_days);
 							 localStorage.setItem('version',data.version);

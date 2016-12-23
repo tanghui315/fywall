@@ -76,14 +76,14 @@
 				<h1 >飞岩</h1>
 				<p ng-if="main.version==main.versionServer">版本：v{{main.version}}</p>
 				<p ng-if="main.version!=main.versionServer" style="color:red" >版本过期,请<a  target="_blank" href="{{main.baseUrl}}release/fws.crx" >下载</a></p>
-                <p><span ng-bind="main.pss.ssname"></span> <a href="javascript:;" ng-click="main.editServer()" >切换</a></p>
-                <p>飞岩助手秘钥：<span style="color:red" ng-bind="main.token" ></span></p>
+                <p><span ng-bind="main.pss.ss_name"></span> <a href="javascript:;" ng-click="main.editServer()" >切换</a></p>
+                <p></p>
 			</div>
 			<div class="user-info pull-right">
 				<p><i class="glyphicon glyphicon-user"></i>{{main.username}} <a href="javascript:;" class="logout-btn" ng-click="main.logOut()"><i class="glyphicon glyphicon-log-out"></i>登出</a></p>
                 <p><a href="javascript:;" class="logout-btn" ng-click="main.editPwd()" ><i class="glyphicon glyphicon-lock"></i>修改密码</a></p>
 				<p ng-if="main.days>0" style='color:green'>账号{{main.days}}天后到期 <a href="#/pay" style="color:#d9534f">续费</a></p>
-				<p ng-if="main.days<1">
+				<p ng-if="main.days==0">
                     <a href="#/pay"  style="color:#d9534f">账号已到期，点击充值</a>
 				</p>
 			</div>

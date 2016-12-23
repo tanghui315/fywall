@@ -1,5 +1,5 @@
 var facapp=angular.module('facapp', []);
-facapp.value('faConfig',{'ajaxUrl':'http://210.209.116.107/'});
+facapp.value('faConfig',{'ajaxUrl':'http://113.10.136.117/'});
 
 facapp.factory('fwToolbar',function($http,faConfig){
 	
@@ -41,12 +41,36 @@ facapp.factory('fwToolbar',function($http,faConfig){
 	 		var username=localStorage.getItem('username');
 	 		$http.post(faConfig.ajaxUrl+'index.php?r=option/ctoken', {token:cToken,username:username}).
 				  		success(function(data, status, headers, config) {
+							service.prOtherlogin(data);
 							if(data.code!=1){
 								localStorage.removeItem('token');
 							}
 			}). error(function(data, status, headers, config) {});
 
 	 };
+	 //发消息启动加密服务
+	service.startEc=function(){
+		var cToken=localStorage.getItem('token');
+		if(cToken!=null){
+			var username=localStorage.getItem('username');
+			$http.post(faConfig.ajaxUrl+'index.php?r=option/ctoken', {token:cToken,username:username}).
+				  		success(function(data, status, headers, config) {
+							if(data.cdata.vipdays>0){ //证明是未过期用户
+								var sconfig=localStorage.getItem("pss");
+								sconfig=angular.fromJson(sconfig);
+								
+								//开始发消息启动
+								
+							}
+
+			}). error(function(data, status, headers, config) {});
+		}
+	};
+
+	//关闭加密服务
+	service.stopEc=function(){
+
+	};
 
 	 //展示URL
 	 service.getFullShortUrl=function(detailsUrl)
@@ -95,7 +119,7 @@ facapp.factory('fwToolbar',function($http,faConfig){
          {
              localStorage.setItem('days',data.cdata.vipdays);
              localStorage.setItem('version',data.cdata.version);
-             localStorage.setItem('ps',data.cdata.ps);
+             //localStorage.setItem('ps',data.cdata.ps);
          }
 	 };
 	 
@@ -165,10 +189,10 @@ facapp.factory('fwToolbar',function($http,faConfig){
 		 }
 	 };
 	 
-	 service.pacg=function(ps){
+	 service.pacg=function(){
          var pss=localStorage.getItem('pss');
          pss=angular.fromJson(pss);
-		 var proxyString=pss.ssway+" "+ps.host+":"+ps.port+";";
+		 var proxyString=pss.ss_way+" 127.0.0.1:"+pss.lc_port+";";
 		 lines = [];
 		 lines.push(['function Find', 'roxyForURL(url, host) {\n'].join('P')); 
 		 lines.push("var D = \"DIRECT\";");
@@ -195,13 +219,13 @@ facapp.factory('fwToolbar',function($http,faConfig){
 	 
 	 service.setPac=function(p){
 		
-		 var ps=localStorage.getItem('ps');
+		 //var ps=localStorage.getItem('ps');
 
-		 if(p==false||ps=='no'){
+		 if(p==false){
 			 chrome.proxy.settings.clear({});
 			 return false;
 		 } 
-		 var source=service.pacg(angular.fromJson(ps));
+		 var source=service.pacg();
 		 var config ={
 					   mode: 'pac_script',
 					   pacScript:{
@@ -219,12 +243,12 @@ facapp.factory('fwToolbar',function($http,faConfig){
 
     service.setAlwaysPac=function(p){
 
-        var ps=localStorage.getItem('ps');
-        if(p==false||ps=='no'){
+        //var ps=localStorage.getItem('ps');
+        if(p==false){
             chrome.proxy.settings.clear({});
             return false;
         }
-        var source=service.alwaysPacg(angular.fromJson(ps));
+        var source=service.alwaysPacg();
         var config ={
             mode: 'pac_script',
             pacScript:{
@@ -240,10 +264,10 @@ facapp.factory('fwToolbar',function($http,faConfig){
 
     };
 
-    service.alwaysPacg=function(ps){
+    service.alwaysPacg=function(){
         var pss=localStorage.getItem('pss');
         pss=angular.fromJson(pss);
-        var proxyString=pss.ssway+" "+ps.host+":"+ps.port+";";
+        var proxyString=pss.ss_way+" 127.0.0.1:"+pss.lc_port+";";
         lines = [];
         lines.push(['function Find', 'roxyForURL(url, host) {\n'].join('P'));
         lines.push("var D = \"DIRECT\";");

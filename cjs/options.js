@@ -152,7 +152,7 @@ optapp.controller('ModalServerCtrl',function($scope, $uibModalInstance,main,fwTo
                 success(function(data, status, headers, config) {
                     fwToolbar.prOtherlogin(data);
                     if(data.code==1){
-                        localStorage.setItem('ps',data.s);
+                        //localStorage.setItem('ps',data.s);
                         localStorage.setItem('pss',data.ss);
                         main.pss=angular.fromJson(data.ss);
                         if(localStorage.getItem('mode')!=null){
